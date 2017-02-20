@@ -1,5 +1,6 @@
 ##Loading and preprocessing the data
 ```{r, echo=FALSE, out.width='800'}```
+
 1.Load the data (i.e. read.csv())
 
 ```{r}
