@@ -1,5 +1,5 @@
 ##Loading and preprocessing the data
-
+```{r, echo=FALSE, out.width='800'}```
 1.Load the data (i.e. read.csv())
 
 
@@ -19,11 +19,10 @@ totalsteps<-aggregate(activity$steps,list(activity$date),FUN=sum,na.rm=TRUE)
 
 ```r
 library(ggplot2)
-g<-ggplot(totalsteps,aes(x=totalsteps$Group.1,y=totalsteps$x))
-g+geom_bar(stat = "identity")+theme(axis.text.x = element_text(angle = 90, hjust = 1))+labs(title = "Histogram of Total Number of Steps Taken Each Day", x = "Date", y = "Total number of steps")
+hist(totalsteps$x,     main="histogram of the total number of steps taken each day")
 ```
 
-![plot of chunk unnamed-chunk-3](figure/unnamed-chunk-3-1.png)
+![plot of chunk unnamed-chunk-18](figure/unnamed-chunk-18-1.png)
 
 3. Calculate and report the mean and median of the total number of steps taken per day
 
@@ -52,7 +51,7 @@ averagesteps<-aggregate(activity$steps,list(activity$interval),FUN=mean,na.rm=TR
 plot(averagesteps$Group.1,averagesteps$x,type="l",xlab = "interval",ylab = "steps",main ="Average number of step taken")
 ```
 
-![plot of chunk unnamed-chunk-5](figure/unnamed-chunk-5-1.png)
+![plot of chunk unnamed-chunk-20](figure/unnamed-chunk-20-1.png)
 
 2.Which 5-minute interval, on average across all the days in the dataset, contains the maximum number of steps?
 
@@ -95,11 +94,10 @@ for (i in 1:nrow(activity)) {
 ```r
 nafilltotalsteps<-aggregate(activity$steps,list(activity$date),FUN=sum,na.rm=TRUE)
 
-g<-ggplot(nafilltotalsteps,aes(x=nafilltotalsteps$Group.1,y=nafilltotalsteps$x))
-g+geom_bar(stat = "identity")+theme(axis.text.x = element_text(angle = 90, hjust = 1))+labs(title = "Histogram of Total Number of Steps Taken Each Day with na filled", x = "Date", y = "Total number of steps")
+hist(nafilltotalsteps$x,     main="histogram of the total number of steps taken each day")
 ```
 
-![plot of chunk unnamed-chunk-9](figure/unnamed-chunk-9-1.png)
+![plot of chunk unnamed-chunk-24](figure/unnamed-chunk-24-1.png)
 
 ```r
 mean(nafilltotalsteps$x)
@@ -142,4 +140,4 @@ g<-ggplot(stepsByDay,aes(stepsByDay$interval,stepsByDay$steps))+geom_line()
 g+facet_grid(stepsByDay$day~.)+labs(title = "Average number of steps taken by Weekend and Weekday", x = "Interval", y = "Total number of steps")
 ```
 
-![plot of chunk unnamed-chunk-11](figure/unnamed-chunk-11-1.png)
+![plot of chunk unnamed-chunk-26](figure/unnamed-chunk-26-1.png)
