@@ -1,6 +1,5 @@
 ##Loading and preprocessing the data
 ```{r, echo=FALSE, out.width='800'}```
-
 1.Load the data (i.e. read.csv())
 
 ```{r}
@@ -17,8 +16,7 @@ totalsteps<-aggregate(activity$steps,list(activity$date),FUN=sum,na.rm=TRUE)
 2.Make a histogram of the total number of steps taken each day
 ```{r}
 library(ggplot2)
-g<-ggplot(totalsteps,aes(x=totalsteps$Group.1,y=totalsteps$x))
-g+geom_bar(stat = "identity")+theme(axis.text.x = element_text(angle = 90, hjust = 1))+labs(title = "Histogram of Total Number of Steps Taken Each Day", x = "Date", y = "Total number of steps")
+hist(totalsteps$x,     main="histogram of the total number of steps taken each day")
 ```
 
 3. Calculate and report the mean and median of the total number of steps taken per day
@@ -64,8 +62,8 @@ for (i in 1:nrow(activity)) {
 ```{r}
 nafilltotalsteps<-aggregate(activity$steps,list(activity$date),FUN=sum,na.rm=TRUE)
 
-g<-ggplot(nafilltotalsteps,aes(x=nafilltotalsteps$Group.1,y=nafilltotalsteps$x))
-g+geom_bar(stat = "identity")+theme(axis.text.x = element_text(angle = 90, hjust = 1))+labs(title = "Histogram of Total Number of Steps Taken Each Day with na filled", x = "Date", y = "Total number of steps")
+hist(nafilltotalsteps$x,     main="histogram of the total number of steps taken each day")
+
 
 mean(nafilltotalsteps$x)
 
